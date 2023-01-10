@@ -1,5 +1,4 @@
-﻿using System;
-using DefaultNamespace.ScriptableEvents;
+﻿using DefaultNamespace.ScriptableEvents;
 using TMPro;
 using UnityEngine;
 using Variables;

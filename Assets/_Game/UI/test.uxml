@@ -1,7 +1,9 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
     <Style src="project://database/Assets/_Game/UI/test.uss?fileID=7433441132597879392&amp;guid=8a65ed622c244da4ca52b469625727c8&amp;type=3#test" />
-    <ui:ScrollView>
-        <ui:Button text="Woah" display-tooltip-when-elided="true" enable-rich-text="true" class="menu-button" />
-        <ui:Button text="Button" display-tooltip-when-elided="true" class="menu-button" style="height: 80px; width: 461px; flex-grow: 1;" />
-    </ui:ScrollView>
+    <ui:MinMaxSlider picking-mode="Ignore" label="Min/Max Spawn Time" min-value="5" max-value="45" low-limit="0.1" high-limit="50" name="spawnTime" />
+    <ui:GroupBox style="align-items: stretch; justify-content: flex-start; flex-direction: row;">
+        <uie:FloatField label="Min Spawn Time" value="0" name="minSpawnTime" tabindex="0" is-delayed="true" readonly="false" style="flex-direction: column; flex-grow: 1; -unity-text-align: upper-center; overflow: hidden; justify-content: flex-start; align-items: center;" />
+        <uie:FloatField label="Max Spawn Time" value="0" name="maxSpawnTime" tabindex="0" is-delayed="true" style="flex-direction: column; flex-grow: 1; -unity-text-align: upper-center; align-items: center;" />
+    </ui:GroupBox>
+    <uie:PropertyField binding-path="gameData" />
 </ui:UXML>

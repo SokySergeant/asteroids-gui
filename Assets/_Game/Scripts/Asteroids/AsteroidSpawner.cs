@@ -1,20 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 namespace Asteroids
 {
     public class AsteroidSpawner : MonoBehaviour
     {
-        [SerializeField] private Asteroid _asteroidPrefab;
-        [SerializeField] private float _minSpawnTime;
-        [SerializeField] private float _maxSpawnTime;
-        [SerializeField] private int _minAmount;
-        [SerializeField] private int _maxAmount;
-        
+        public GameData gameData;
+
         private float _timer;
         private float _nextSpawnTime;
         private Camera _camera;
+
+        
 
         private enum SpawnLocation
         {
@@ -45,7 +45,7 @@ namespace Asteroids
 
         private void UpdateNextSpawnTime()
         {
-            _nextSpawnTime = Random.Range(_minSpawnTime, _maxSpawnTime);
+            _nextSpawnTime = Random.Range(gameData.minSpawnTime, gameData.maxSpawnTime);
         }
 
         private void UpdateTimer()
@@ -60,13 +60,13 @@ namespace Asteroids
 
         private void Spawn()
         {
-            var amount = Random.Range(_minAmount, _maxAmount + 1);
+            var amount = Random.Range(gameData.minAmount, gameData.maxAmount + 1);
             
             for (var i = 0; i < amount; i++)
             {
                 var location = GetSpawnLocation();
                 var position = GetStartPosition(location);
-                Instantiate(_asteroidPrefab, position, Quaternion.identity);
+                //Instantiate(_asteroidPrefab[0], position, Quaternion.identity);
             }
         }
 
@@ -112,5 +112,7 @@ namespace Asteroids
             
             return _camera.ScreenToWorldPoint(pos);
         }
+        
+        
     }
 }

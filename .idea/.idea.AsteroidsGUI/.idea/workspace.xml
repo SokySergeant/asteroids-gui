@@ -7,6 +7,12 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/_Game/UI/AsteroidEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Game/UI/AsteroidSpawnerEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Game/UI/GameData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Game/UI/SingleAsteroidData.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -22,6 +28,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -64,6 +71,11 @@
       <option name="presentableId" value="Default" />
       <updated>1673363207870</updated>
       <workItem from="1673363230062" duration="2969000" />
+      <workItem from="1673441383316" duration="3681000" />
+      <workItem from="1673498428237" duration="3480000" />
+      <workItem from="1673503153858" duration="215000" />
+      <workItem from="1673517848641" duration="11374000" />
+      <workItem from="1673596121632" duration="14064000" />
     </task>
     <servers />
   </component>

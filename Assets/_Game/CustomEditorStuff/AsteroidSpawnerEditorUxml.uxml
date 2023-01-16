@@ -1,0 +1,24 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/_Game/CustomEditorStuff/Styles.uss?fileID=7433441132597879392&amp;guid=0fd585982a7e0664b80a4cf15a238e23&amp;type=3#Styles" />
+    <uie:PropertyField binding-path="gameData" name="gameDataField" />
+    <uie:PropertyField binding-path="asteroidPrefab" name="asteroidPrefabField" />
+    <ui:GroupBox style="background-color: rgb(67, 67, 67); border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; padding-right: 10px;">
+        <ui:Label text="Spawn Time" display-tooltip-when-elided="true" class="title-label" />
+        <ui:MinMaxSlider picking-mode="Ignore" label="Min/Max Spawn Time" min-value="5" max-value="45" low-limit="0.1" high-limit="50" name="spawnTime" />
+        <ui:GroupBox style="align-items: stretch; justify-content: flex-start; flex-direction: row;">
+            <uie:FloatField label="Min Spawn Time" value="0" name="minSpawnTime" tabindex="0" is-delayed="true" readonly="false" style="flex-direction: column; flex-grow: 1; -unity-text-align: upper-center; overflow: hidden; justify-content: flex-start; align-items: center;" />
+            <uie:FloatField label="Max Spawn Time" value="0" name="maxSpawnTime" tabindex="0" is-delayed="true" style="flex-direction: column; flex-grow: 1; -unity-text-align: upper-center; align-items: center;" />
+        </ui:GroupBox>
+    </ui:GroupBox>
+    <ui:GroupBox style="background-color: rgb(68, 68, 68); border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; padding-right: 10px;">
+        <ui:Label text="Asteroid Amount" display-tooltip-when-elided="true" class="title-label" />
+        <ui:MinMaxSlider picking-mode="Ignore" label="Min/Max Asteroid Amount" min-value="5" max-value="45" low-limit="0" high-limit="50" name="asteroidAmount" />
+        <ui:GroupBox style="align-items: stretch; justify-content: flex-start; flex-direction: row;">
+            <uie:IntegerField label="Min Asteroid Amount" value="0" name="minAsteroidAmount" is-delayed="true" style="flex-grow: 1; flex-direction: column; align-items: center; -unity-text-align: upper-center;" />
+            <uie:IntegerField label="Max Asteroid Amount" value="0" name="maxAsteroidAmount" is-delayed="true" style="flex-grow: 1; flex-direction: column; align-items: center; -unity-text-align: upper-center;" />
+        </ui:GroupBox>
+    </ui:GroupBox>
+    <ui:GroupBox name="asteroidsBox" style="background-color: rgb(68, 68, 68); border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; padding-right: 10px;">
+        <ui:Label text="Asteroids" display-tooltip-when-elided="true" class="title-label" />
+    </ui:GroupBox>
+</ui:UXML>

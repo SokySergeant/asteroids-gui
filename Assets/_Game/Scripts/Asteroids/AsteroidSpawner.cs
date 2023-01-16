@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 namespace Asteroids
@@ -13,8 +11,11 @@ namespace Asteroids
         private float _timer;
         private float _nextSpawnTime;
         private Camera _camera;
-
         
+        public GameObject asteroidPrefab;
+
+        [HideInInspector] public bool bogus;
+
 
         private enum SpawnLocation
         {
@@ -23,6 +24,8 @@ namespace Asteroids
             Left,
             Right
         }
+        
+        
 
         private void Start()
         {
@@ -30,6 +33,8 @@ namespace Asteroids
             Spawn();
             UpdateNextSpawnTime();
         }
+        
+        
 
         private void Update()
         {
@@ -43,21 +48,29 @@ namespace Asteroids
             _timer = 0f;
         }
 
+        
+        
         private void UpdateNextSpawnTime()
         {
             _nextSpawnTime = Random.Range(gameData.minSpawnTime, gameData.maxSpawnTime);
         }
 
+        
+        
         private void UpdateTimer()
         {
             _timer += Time.deltaTime;
         }
 
+        
+        
         private bool ShouldSpawn()
         {
             return _timer >= _nextSpawnTime;
         }
 
+        
+        
         private void Spawn()
         {
             var amount = Random.Range(gameData.minAmount, gameData.maxAmount + 1);
@@ -66,10 +79,20 @@ namespace Asteroids
             {
                 var location = GetSpawnLocation();
                 var position = GetStartPosition(location);
-                //Instantiate(_asteroidPrefab[0], position, Quaternion.identity);
+                var tempAsteroid = Instantiate(asteroidPrefab, position, Quaternion.identity).GetComponent<Asteroid>();
+                
+                //choose asteroid settings
+                tempAsteroid.minForce = gameData.asteroids[0].minForce;
+                tempAsteroid.maxForce = gameData.asteroids[0].maxForce;
+                tempAsteroid.minSize = gameData.asteroids[0].minSize;
+                tempAsteroid.maxSize = gameData.asteroids[0].maxSize;
+                tempAsteroid.minTorque = gameData.asteroids[0].minTorque;
+                tempAsteroid.maxTorque = gameData.asteroids[0].maxTorque;
             }
         }
 
+        
+        
         private static SpawnLocation GetSpawnLocation()
         {
             var roll = Random.Range(0, 4);

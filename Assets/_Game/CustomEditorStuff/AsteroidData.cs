@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 [System.Serializable]
-public class SingleAsteroidData
+public class AsteroidData
 {
     public float minForce;
     public float maxForce;

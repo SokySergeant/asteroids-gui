@@ -1,0 +1,6 @@
+.title-label {
+    -unity-text-align: upper-center;
+    padding-top: 10px;
+    font-size: 22px;
+    -unity-font-style: bold;
+}

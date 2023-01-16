@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "SOs/AsteroidData")]
+[CreateAssetMenu(menuName = "SOs/GameData")]
 public class GameData : ScriptableObject
 {
     public float minSpawnTime;
@@ -9,5 +9,5 @@ public class GameData : ScriptableObject
     public int minAmount;
     public int maxAmount;
     
-    public List<SingleAsteroidData> asteroids;
+    public List<AsteroidData> asteroids;
 }

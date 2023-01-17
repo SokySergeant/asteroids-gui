@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 066937a2c6de693449b147b54cde7515, type: 3}
   m_Name: GameData1
   m_EditorClassIdentifier: 
-  minSpawnTime: 0.1
-  maxSpawnTime: 18.83
+  minSpawnTime: 22.1
+  maxSpawnTime: 39.22
   minAmount: 7
   maxAmount: 21
   asteroids:
-  - minForce: 1.12
-    maxForce: 2.37
-    minSize: 1.06
-    maxSize: 2.88
-    minTorque: 1.14
-    maxTorque: 3
+  - minForce: 1.05
+    maxForce: 2.7
+    minSize: 1.15
+    maxSize: 2.94
+    minTorque: 0.99
+    maxTorque: 2.7
   - minForce: 1.05
     maxForce: 2.7
     minSize: 1.15

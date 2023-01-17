@@ -4,6 +4,7 @@ using Random = UnityEngine.Random;
 
 namespace Asteroids
 {
+    [System.Serializable]
     public class AsteroidSpawner : MonoBehaviour
     {
         public GameData gameData;

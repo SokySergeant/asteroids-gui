@@ -17,21 +17,9 @@ MonoBehaviour:
   minAmount: 7
   maxAmount: 21
   asteroids:
-  - minForce: 1.05
-    maxForce: 2.7
-    minSize: 1.15
-    maxSize: 2.94
-    minTorque: 0.99
-    maxTorque: 2.7
-  - minForce: 1.05
-    maxForce: 2.7
-    minSize: 1.15
-    maxSize: 2.94
-    minTorque: 0.99
-    maxTorque: 2.7
-  - minForce: 1.05
-    maxForce: 2.7
-    minSize: 1.15
-    maxSize: 2.94
-    minTorque: 0.99
-    maxTorque: 2.7
+  - minForce: 0.1
+    maxForce: 0.1
+    minSize: 0.1
+    maxSize: 0.1
+    minTorque: 0.1
+    maxTorque: 0.1

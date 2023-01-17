@@ -19,8 +19,9 @@
                 <uie:IntegerField label="Max Asteroid Amount" value="0" name="maxAsteroidAmount" is-delayed="true" style="flex-grow: 1; flex-direction: column; align-items: center; -unity-text-align: upper-center;" />
             </ui:GroupBox>
         </ui:GroupBox>
-        <ui:GroupBox name="asteroidsBox" style="background-color: rgb(68, 68, 68); border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; padding-right: 10px;">
+        <ui:GroupBox style="background-color: rgb(68, 68, 68); border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; padding-right: 10px;">
             <ui:Label text="Asteroids" display-tooltip-when-elided="true" class="title-label" />
+            <ui:GroupBox name="asteroidsBox" />
         </ui:GroupBox>
     </ui:VisualElement>
 </ui:UXML>

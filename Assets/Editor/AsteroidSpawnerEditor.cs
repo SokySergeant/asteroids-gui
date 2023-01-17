@@ -34,16 +34,7 @@ public class AsteroidSpawnerEditor : Editor
         _uxml = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/_Game/CustomEditorStuff/AsteroidSpawnerEditorUxml.uxml");
         _uxml.CloneTree(root);
         
-
-        _asteroidContainer = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/_Game/CustomEditorStuff/AsteroidContainerUxml.uxml");
-        _asteroidsBox = root.Q<GroupBox>("asteroidsBox");
-        _tempAsteroids.Clear();
-        for (int i = 0; i < _gameData.asteroids.Count; i++)
-        {
-            var tempAsteroid = CreateTempAsteroid(i, root, (AsteroidSpawner)target);
-            _tempAsteroids.Add(tempAsteroid);
-            _asteroidsBox.Add(tempAsteroid);
-        }
+        CreateAsteroidContainer(root);
         
         GetElements(root);
         
@@ -56,7 +47,7 @@ public class AsteroidSpawnerEditor : Editor
 
 
 
-    private VisualElement CreateTempAsteroid(int i, VisualElement root, AsteroidSpawner target)
+    private VisualElement CreateTempAsteroid(int i, VisualElement root)
     {
         var tempAsteroid = new VisualElement();
         _asteroidContainer.CloneTree(tempAsteroid);
@@ -105,65 +96,28 @@ public class AsteroidSpawnerEditor : Editor
         deleteBtnEl.clicked += () =>
         {
             _gameData.asteroids.RemoveAt(i);
-        
-            
-
-            //EditorUtility.ForceReloadInspectors();
-        
-            //CreateInspectorGUI();
-            
-            EditorUtility.SetDirty(target);
-            
-            EditorUtility.SetDirty(target.gameObject);
-            
-            EditorUtility.SetDirty(_uxml);
-        
-            VisualElement rootVE = root.Q<VisualElement>("rootVisualElement");
-        
-            GroupBox asteroidBox = root.Q<GroupBox>("asteroidsBox");
-        
-            asteroidBox.MarkDirtyRepaint();
-            //EditorUtility.SetDirty(asteroidBox);
-            EditorUtility.SetDirty(rootVE.visualTreeAssetSource);
-            Repaint();
-            // target.gameObject.SetActive(false);
-            // target.gameObject.SetActive(true);
+            CreateAsteroidContainer(root);
         };
-        // deleteBtnEl.RegisterCallback<MouseUpEvent>(e =>
-        // {
-        //     _gameData.asteroids.RemoveAt(i);
-        //     // serializedObject.Update();
-        //     // serializedObject.ApplyModifiedProperties();
-        //     // Repaint();
-        //     
-        //     //EditorUtility.SetDirty(target.gameObject.GetComponent<AsteroidSpawnerEditor>());
-        //     EditorUtility.SetDirty(target);
-        // });
 
         return tempAsteroid;
     }
     
-    
 
 
-    public override bool RequiresConstantRepaint()
+    private void CreateAsteroidContainer(VisualElement root)
     {
-        //Debug.Log("requiresconstantrepaint");
-        return true;
+        _asteroidContainer = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/_Game/CustomEditorStuff/AsteroidContainerUxml.uxml");
+        _asteroidsBox = root.Q<GroupBox>("asteroidsBox");
+        _asteroidsBox.Clear();
+        _tempAsteroids.Clear();
+        for (int i = 0; i < _gameData.asteroids.Count; i++)
+        {
+            var tempAsteroid = CreateTempAsteroid(i, root);
+            _tempAsteroids.Add(tempAsteroid);
+            _asteroidsBox.Add(tempAsteroid);
+        }
     }
     
-    
-
-
-    public override void OnInspectorGUI()
-    {
-        //Repaint();
-        base.OnInspectorGUI();
-        Debug.Log("oninspectorgui");
-        EditorUtility.SetDirty(target);
-        if (EditorApplication.isPlaying)
-            Repaint();
-    }
 
 
     private void GetElements(VisualElement root)
@@ -274,7 +228,7 @@ public class AsteroidSpawnerEditor : Editor
     private void UpdateMinForce(int index, float value)
     {
         EditorUtility.SetDirty(_gameData);
-        value = Mathf.Clamp(value, 0.1f, _gameData.asteroids[index].maxForce);
+        value = Mathf.Clamp(value, 0f, _gameData.asteroids[index].maxForce);
         _tempAsteroids[index].Q<FloatField>("minForce").value = value;
         _gameData.asteroids[index].minForce = value;
     }
@@ -292,7 +246,7 @@ public class AsteroidSpawnerEditor : Editor
     private void UpdateMinSize(int index, float value)
     {
         EditorUtility.SetDirty(_gameData);
-        value = Mathf.Clamp(value, 0.1f, _gameData.asteroids[index].maxSize);
+        value = Mathf.Clamp(value, 0f, _gameData.asteroids[index].maxSize);
         _tempAsteroids[index].Q<FloatField>("minSize").value = value;
         _gameData.asteroids[index].minSize = value;
     }
@@ -310,7 +264,7 @@ public class AsteroidSpawnerEditor : Editor
     private void UpdateMinTorque(int index, float value)
     {
         EditorUtility.SetDirty(_gameData);
-        value = Mathf.Clamp(value, 0.1f, _gameData.asteroids[index].maxTorque);
+        value = Mathf.Clamp(value, 0f, _gameData.asteroids[index].maxTorque);
         _tempAsteroids[index].Q<FloatField>("minTorque").value = value;
         _gameData.asteroids[index].minTorque = value;
     }

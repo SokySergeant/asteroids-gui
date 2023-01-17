@@ -4,8 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "SOs/GameData")]
 public class GameData : ScriptableObject
 {
-    public float minSpawnTime;
-    public float maxSpawnTime;
+    [Min(0.1f)] public float minSpawnTime;
+    [Min(0.1f)] public float maxSpawnTime;
     public int minAmount;
     public int maxAmount;
     

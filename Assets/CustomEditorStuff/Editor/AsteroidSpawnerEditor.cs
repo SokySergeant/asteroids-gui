@@ -31,7 +31,7 @@ public class AsteroidSpawnerEditor : Editor
         
         var root = new VisualElement();
 
-        _uxml = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/_Game/CustomEditorStuff/AsteroidSpawnerEditorUxml.uxml");
+        _uxml = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/CustomEditorStuff/AsteroidSpawnerEditorUxml.uxml");
         _uxml.CloneTree(root);
         
         CreateAsteroidContainer(root);
@@ -59,6 +59,7 @@ public class AsteroidSpawnerEditor : Editor
         var maxSizeEl = tempAsteroid.Q<FloatField>("maxSize");
         var minTorqueEl = tempAsteroid.Q<FloatField>("minTorque");
         var maxTorqueEl = tempAsteroid.Q<FloatField>("maxTorque");
+        var colorEl = tempAsteroid.Q<ColorField>("color");
         var deleteBtnEl = tempAsteroid.Q<Button>("deleteBtn");
 
         asteroidIndexEl.text = "Asteroid #" + (i + 1);
@@ -68,6 +69,7 @@ public class AsteroidSpawnerEditor : Editor
         maxSizeEl.value = _gameData.asteroids[i].maxSize;
         minTorqueEl.value = _gameData.asteroids[i].minTorque;
         maxTorqueEl.value = _gameData.asteroids[i].maxTorque;
+        colorEl.value = _gameData.asteroids[i].color;
 
         minForceEl.RegisterValueChangedCallback(e =>
         {
@@ -93,11 +95,33 @@ public class AsteroidSpawnerEditor : Editor
         {
             UpdateMaxTorque(i, e.newValue);
         });
+        colorEl.RegisterValueChangedCallback(e =>
+        {
+            EditorUtility.SetDirty(_gameData);
+            _gameData.asteroids[i].color = e.newValue;
+        });
         deleteBtnEl.clicked += () =>
         {
+            if (_gameData.asteroids.Count <= 1)
+            {
+                Debug.LogWarning("There must be at least one asteroid.");
+                return;
+            }
             _gameData.asteroids.RemoveAt(i);
+            //Repaint(); //this doesn't work for some reason
             CreateAsteroidContainer(root);
         };
+        if (_gameData.asteroids.Count - 1 == i)
+        {
+            var addBtnEl = tempAsteroid.Q<Button>("addBtn");
+            addBtnEl.style.display = DisplayStyle.Flex;
+            addBtnEl.clicked += () =>
+            {
+                _gameData.asteroids.Add(_gameData.asteroids[^1]); //^ from end operator
+                //Repaint();
+                CreateAsteroidContainer(root);
+            };
+        }
 
         return tempAsteroid;
     }
@@ -106,7 +130,7 @@ public class AsteroidSpawnerEditor : Editor
 
     private void CreateAsteroidContainer(VisualElement root)
     {
-        _asteroidContainer = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/_Game/CustomEditorStuff/AsteroidContainerUxml.uxml");
+        _asteroidContainer = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/CustomEditorStuff/AsteroidContainerUxml.uxml");
         _asteroidsBox = root.Q<GroupBox>("asteroidsBox");
         _asteroidsBox.Clear();
         _tempAsteroids.Clear();
@@ -149,6 +173,8 @@ public class AsteroidSpawnerEditor : Editor
 
     private void AssignEvents()
     {
+        
+        
         _spawnTimeSlider.RegisterValueChangedCallback(e =>
         {
             UpdateSpawnTimeMin(e.newValue.x);

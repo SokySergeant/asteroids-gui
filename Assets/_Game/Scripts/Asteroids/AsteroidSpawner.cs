@@ -4,7 +4,6 @@ using Random = UnityEngine.Random;
 
 namespace Asteroids
 {
-    [System.Serializable]
     public class AsteroidSpawner : MonoBehaviour
     {
         public GameData gameData;
@@ -81,14 +80,15 @@ namespace Asteroids
                 var location = GetSpawnLocation();
                 var position = GetStartPosition(location);
                 var tempAsteroid = Instantiate(asteroidPrefab, position, Quaternion.identity).GetComponent<Asteroid>();
-                
-                //choose asteroid settings
-                tempAsteroid.minForce = gameData.asteroids[0].minForce;
-                tempAsteroid.maxForce = gameData.asteroids[0].maxForce;
-                tempAsteroid.minSize = gameData.asteroids[0].minSize;
-                tempAsteroid.maxSize = gameData.asteroids[0].maxSize;
-                tempAsteroid.minTorque = gameData.asteroids[0].minTorque;
-                tempAsteroid.maxTorque = gameData.asteroids[0].maxTorque;
+
+                int randInd = Random.Range(0, gameData.asteroids.Count);
+                tempAsteroid.minForce = gameData.asteroids[randInd].minForce;
+                tempAsteroid.maxForce = gameData.asteroids[randInd].maxForce;
+                tempAsteroid.minSize = gameData.asteroids[randInd].minSize;
+                tempAsteroid.maxSize = gameData.asteroids[randInd].maxSize;
+                tempAsteroid.minTorque = gameData.asteroids[randInd].minTorque;
+                tempAsteroid.maxTorque = gameData.asteroids[randInd].maxTorque;
+                tempAsteroid.gameObject.GetComponentInChildren<SpriteRenderer>().color = gameData.asteroids[randInd].color;
             }
         }
 

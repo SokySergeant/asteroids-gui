@@ -1,3 +1,5 @@
+using UnityEngine;
+
 [System.Serializable]
 public class AsteroidData
 {
@@ -7,4 +9,5 @@ public class AsteroidData
     public float maxSize;
     public float minTorque;
     public float maxTorque;
+    public Color color;
 }

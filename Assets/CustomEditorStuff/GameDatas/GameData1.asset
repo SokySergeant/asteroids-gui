@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066937a2c6de693449b147b54cde7515, type: 3}
+  m_Name: GameData1
+  m_EditorClassIdentifier: 
+  minSpawnTime: 1
+  maxSpawnTime: 5
+  minAmount: 1
+  maxAmount: 3
+  asteroids:
+  - minForce: 9.47
+    maxForce: 16.24
+    minSize: 0.34
+    maxSize: 0.6
+    minTorque: 42.2
+    maxTorque: 59.4
+    color: {r: 1, g: 0, b: 0, a: 1}
+  - minForce: 2.27
+    maxForce: 2.49
+    minSize: 1
+    maxSize: 2
+    minTorque: 2.11
+    maxTorque: 2.71
+    color: {r: 0.037246335, g: 0.8773585, b: 0.65300673, a: 1}
+  - minForce: 2.27
+    maxForce: 2.49
+    minSize: 0.5
+    maxSize: 1
+    minTorque: 0.1
+    maxTorque: 0.1
+    color: {r: 1, g: 0.10849059, b: 0.9488195, a: 1}

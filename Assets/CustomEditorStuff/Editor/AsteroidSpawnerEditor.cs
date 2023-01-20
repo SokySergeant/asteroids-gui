@@ -60,6 +60,8 @@ public class AsteroidSpawnerEditor : Editor
         var minTorqueEl = tempAsteroid.Q<FloatField>("minTorque");
         var maxTorqueEl = tempAsteroid.Q<FloatField>("maxTorque");
         var colorEl = tempAsteroid.Q<ColorField>("color");
+        var minChildAmountEl = tempAsteroid.Q<IntegerField>("minChildAmount");
+        var maxChildAmountEl = tempAsteroid.Q<IntegerField>("maxChildAmount");
         var deleteBtnEl = tempAsteroid.Q<Button>("deleteBtn");
 
         asteroidIndexEl.text = "Asteroid #" + (i + 1);
@@ -69,6 +71,8 @@ public class AsteroidSpawnerEditor : Editor
         maxSizeEl.value = _gameData.asteroids[i].maxSize;
         minTorqueEl.value = _gameData.asteroids[i].minTorque;
         maxTorqueEl.value = _gameData.asteroids[i].maxTorque;
+        minChildAmountEl.value = _gameData.asteroids[i].minChildAmount;
+        maxChildAmountEl.value = _gameData.asteroids[i].maxChildAmount;
         colorEl.value = _gameData.asteroids[i].color;
 
         minForceEl.RegisterValueChangedCallback(e =>
@@ -94,6 +98,14 @@ public class AsteroidSpawnerEditor : Editor
         maxTorqueEl.RegisterValueChangedCallback(e =>
         {
             UpdateMaxTorque(i, e.newValue);
+        });
+        minChildAmountEl.RegisterValueChangedCallback(e =>
+        {
+            UpdateMinChildAmount(i, e.newValue);
+        });
+        maxChildAmountEl.RegisterValueChangedCallback(e =>
+        {
+            UpdateMaxChildAmount(i, e.newValue);
         });
         colorEl.RegisterValueChangedCallback(e =>
         {
@@ -173,8 +185,6 @@ public class AsteroidSpawnerEditor : Editor
 
     private void AssignEvents()
     {
-        
-        
         _spawnTimeSlider.RegisterValueChangedCallback(e =>
         {
             UpdateSpawnTimeMin(e.newValue.x);
@@ -262,7 +272,7 @@ public class AsteroidSpawnerEditor : Editor
     private void UpdateMaxForce(int index, float value)
     {
         EditorUtility.SetDirty(_gameData);
-        value = Mathf.Clamp(value, _gameData.asteroids[index].minForce, Mathf.Infinity);
+        value = Mathf.Max(value, _gameData.asteroids[index].minForce);
         _tempAsteroids[index].Q<FloatField>("maxForce").value = value;
         _gameData.asteroids[index].maxForce = value;
     }
@@ -280,7 +290,7 @@ public class AsteroidSpawnerEditor : Editor
     private void UpdateMaxSize(int index, float value)
     {
         EditorUtility.SetDirty(_gameData);
-        value = Mathf.Clamp(value, _gameData.asteroids[index].minSize, Mathf.Infinity);
+        value = Mathf.Max(value, _gameData.asteroids[index].minSize);
         _tempAsteroids[index].Q<FloatField>("maxSize").value = value;
         _gameData.asteroids[index].maxSize = value;
     }
@@ -298,9 +308,27 @@ public class AsteroidSpawnerEditor : Editor
     private void UpdateMaxTorque(int index, float value)
     {
         EditorUtility.SetDirty(_gameData);
-        value = Mathf.Clamp(value, _gameData.asteroids[index].minTorque, Mathf.Infinity);
+        value = Mathf.Max(value, _gameData.asteroids[index].minTorque);
         _tempAsteroids[index].Q<FloatField>("maxTorque").value = value;
         _gameData.asteroids[index].maxTorque = value;
+    }
+    
+    
+    
+    private void UpdateMinChildAmount(int index, int value)
+    {
+        EditorUtility.SetDirty(_gameData);
+        value = Mathf.Clamp(value, 0, _gameData.asteroids[index].maxChildAmount);
+        _tempAsteroids[index].Q<IntegerField>("minChildAmount").value = value;
+        _gameData.asteroids[index].minChildAmount = value;
+    }
+    
+    private void UpdateMaxChildAmount(int index, int value)
+    {
+        EditorUtility.SetDirty(_gameData);
+        value = Mathf.Max(value, _gameData.asteroids[index].minChildAmount);
+        _tempAsteroids[index].Q<IntegerField>("maxChildAmount").value = value;
+        _gameData.asteroids[index].maxChildAmount = value;
     }
     
 

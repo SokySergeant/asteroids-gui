@@ -10,4 +10,6 @@ public class AsteroidData
     public float minTorque;
     public float maxTorque;
     public Color color;
+    public int minChildAmount;
+    public int maxChildAmount;
 }

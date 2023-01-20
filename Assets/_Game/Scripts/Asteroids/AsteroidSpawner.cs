@@ -88,6 +88,8 @@ namespace Asteroids
                 tempAsteroid.maxSize = gameData.asteroids[randInd].maxSize;
                 tempAsteroid.minTorque = gameData.asteroids[randInd].minTorque;
                 tempAsteroid.maxTorque = gameData.asteroids[randInd].maxTorque;
+                tempAsteroid.minChildAmount = gameData.asteroids[randInd].minChildAmount;
+                tempAsteroid.maxChildAmount = gameData.asteroids[randInd].maxChildAmount;
                 tempAsteroid.gameObject.GetComponentInChildren<SpriteRenderer>().color = gameData.asteroids[randInd].color;
             }
         }

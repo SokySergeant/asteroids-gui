@@ -17,6 +17,8 @@ namespace Asteroids
         public float maxSize;
         public float minTorque;
         public float maxTorque;
+        public int minChildAmount = 0;
+        public int maxChildAmount = 0;
 
         [Header("References:")]
         [SerializeField] private Transform shape;
@@ -47,6 +49,21 @@ namespace Asteroids
         private void HitByLaser()
         {
             onAsteroidDestroyed.Raise(_instanceId);
+            var childAmount = Random.Range(minChildAmount, maxChildAmount + 1);
+
+            for (int i = 0; i < childAmount; i++)
+            {
+                var tempAsteroid = Instantiate(this, transform.position, Quaternion.identity).GetComponent<Asteroid>();
+                tempAsteroid.minForce = minForce / 2;
+                tempAsteroid.maxForce = maxForce / 2;
+                tempAsteroid.minSize = minSize / 2;
+                tempAsteroid.maxSize = maxSize / 2;
+                tempAsteroid.minTorque = minTorque / 2;
+                tempAsteroid.maxTorque = maxTorque / 2;
+                tempAsteroid.minChildAmount = 0;
+                tempAsteroid.maxChildAmount = 0;
+            }
+            
             Destroy(gameObject);
         }
 

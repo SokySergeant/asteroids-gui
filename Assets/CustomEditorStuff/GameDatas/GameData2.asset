@@ -17,10 +17,12 @@ MonoBehaviour:
   minAmount: 1
   maxAmount: 3
   asteroids:
-  - minForce: 9.47
-    maxForce: 16.24
-    minSize: 0.34
-    maxSize: 0.6
-    minTorque: 42.2
-    maxTorque: 59.4
-    color: {r: 1, g: 0, b: 0, a: 1}
+  - minForce: 4
+    maxForce: 5
+    minSize: 0.5
+    maxSize: 1
+    minTorque: 1
+    maxTorque: 2
+    color: {r: 0.59990144, g: 1, b: 0, a: 1}
+    minChildAmount: 4
+    maxChildAmount: 5

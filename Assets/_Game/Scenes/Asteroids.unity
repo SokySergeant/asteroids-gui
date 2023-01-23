@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1ae38084ec4c29aa5d36b28f72a324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameData: {fileID: 11400000, guid: 7e4b387c655c5ed4ca04685a52548a56, type: 2}
+  gameData: {fileID: 11400000, guid: ebf744cd512cfbe448e279d8f9e9dd86, type: 2}
   asteroidPrefab: {fileID: 1784223117350305384, guid: 01106835b2bc0e347a3bb06b7544b51a, type: 3}
   bogus: 0
 --- !u!4 &1867257717

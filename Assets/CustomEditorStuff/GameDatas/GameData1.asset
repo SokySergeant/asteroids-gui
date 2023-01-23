@@ -24,6 +24,8 @@ MonoBehaviour:
     minTorque: 42.2
     maxTorque: 59.4
     color: {r: 1, g: 0, b: 0, a: 1}
+    minChildAmount: 0
+    maxChildAmount: 0
   - minForce: 2.27
     maxForce: 2.49
     minSize: 1
@@ -31,6 +33,8 @@ MonoBehaviour:
     minTorque: 2.11
     maxTorque: 2.71
     color: {r: 0.037246335, g: 0.8773585, b: 0.65300673, a: 1}
+    minChildAmount: 1
+    maxChildAmount: 3
   - minForce: 2.27
     maxForce: 2.49
     minSize: 0.5
@@ -38,3 +42,5 @@ MonoBehaviour:
     minTorque: 0.1
     maxTorque: 0.1
     color: {r: 1, g: 0.10849059, b: 0.9488195, a: 1}
+    minChildAmount: 1
+    maxChildAmount: 1
